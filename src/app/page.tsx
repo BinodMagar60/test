@@ -95,7 +95,7 @@ export default function Login() {
               Username
             </div>
             <div>
-              <Input type="text" value={formData.username} name="username" placeholder="Jhon12" onChange={handleChange} />
+              <Input type="text" value={formData.username} name="username" placeholder="user1" onChange={handleChange} />
             </div>
           </div>
           <div>
@@ -103,7 +103,7 @@ export default function Login() {
               Password
             </div>
             <div className="relative">
-              <Input type={isToggle ? "text" : "password"} name="password" value={formData.password} placeholder="1234" onChange={handleChange} />
+              <Input type={isToggle ? "text" : "password"} name="password" value={formData.password} placeholder="user1" onChange={handleChange} />
               <button type="button" className="absolute top-1/2 -translate-y-1/2 right-2" onClick={() => setToggle(prev => !prev)}>{isToggle ? <EyeOff size={sizeValue} /> : <Eye size={sizeValue} />}</button>
             </div>
           </div>
