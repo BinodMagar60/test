@@ -110,29 +110,29 @@ const Page = () => {
 
         <div>
           <div className="w-full flex justify-center">
-            <img src={productData?.image} alt={productData?.title} className="w-40 h-40 object-contain" />
+            <img src={productData?.image} alt={productData.title} className="w-40 h-40 object-contain" />
           </div>
 
           <form onSubmit={handleSubmit}>
             <div>
               <div>Title</div>
-              <Input onChange={handleChange} value={productData?.title} name='title' type="text" />
+              <Input onChange={handleChange} value={productData.title} name='title' type="text" />
             </div>
             <div>
               <div>Category</div>
-              <Input onChange={handleChange} value={productData?.category} name='category' type="text" />
+              <Input onChange={handleChange} value={productData.category} name='category' type="text" />
             </div>
             <div>
               <div>Description</div>
-              <Input onChange={handleChange} value={productData?.description} name='description' type="text" />
+              <Input onChange={handleChange} value={productData.description} name='description' type="text" />
             </div>
             <div>
               <div>Price</div>
-              <Input onChange={handleChange} value={productData?.price} name='price' type="number" />
+              <Input onChange={handleChange} value={productData.price} name='price' type="number" />
             </div>
             <div>
               <div>Image</div>
-              <Input onChange={handleChange} value={productData?.image} name='image' type="text" />
+              <Input onChange={handleChange} value={productData.image} name='image' type="text" />
             </div>
             <div>
               <div>Rating</div>
