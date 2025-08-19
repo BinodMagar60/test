@@ -29,6 +29,7 @@ const Page = () => {
     const [productData, setProductData] = useState<IProduct[]>([])
     const [isClose, setClose] = useState(false)
     const naviate = useRouter()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const apiFetch = async () => {
@@ -40,6 +41,9 @@ const Page = () => {
                 }
                 // console.log(response)
                 setProductData(response.data)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000);
             } catch (error) {
                 console.log(error)
             }
@@ -51,7 +55,14 @@ const Page = () => {
 
     return (
         <div className="w-full p-8 bg-white rounded-md border border-gray-300">
-            <div className="flex justify-between">
+           {
+            loading? <>
+            <div className="w-full flex justify-center">
+                <div className="w-8 h-8 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+            </div>
+</>:
+            <>
+             <div className="flex justify-between">
                 <div className="text-xl font-semibold">Product</div>
                 <div><Button variant={'outline'} className="cursor-pointer" onClick={() => setClose(true)}><Plus />Add Product</Button></div>
             </div>
@@ -101,6 +112,8 @@ const Page = () => {
             </div>
 
             {isClose && <AddCard setClose={setClose} />}
+            </>
+           }
 
         </div>
     )
