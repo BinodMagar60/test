@@ -10,7 +10,7 @@ import { toast } from "sonner"
 import axios from "axios"
 
 
-import {  z } from "zod";
+import { z } from "zod";
 
 const productSchema = z.object({
     id: z.string().min(1, "id is required"),
@@ -32,13 +32,17 @@ const Page = () => {
 
     useEffect(() => {
         const apiFetch = async () => {
-            const response = await axios.get('https://fakestoreapi.com/products')
-            if (response.status !== 200) {
-                console.log('data fetching error')
-                return
+            try {
+                const response = await axios.get('https://fakestoreapi.com/products')
+                if (response.status !== 200) {
+                    console.log('data fetching error')
+                    return
+                }
+                // console.log(response)
+                setProductData(response.data)
+            } catch (error) {
+                console.log(error)
             }
-            // console.log(response)
-            setProductData(response.data)
 
         }
         apiFetch()
@@ -56,14 +60,14 @@ const Page = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4 xl:grid-cols-5">
                 {
                     productData.map(item => (
-                        <div key={item.id} className="border border-gray-300 p-2 rounded-md flex flex-col hover:shadow-sm" onClick={()=>{
+                        <div key={item.id} className="border border-gray-300 p-2 rounded-md flex flex-col hover:shadow-sm" onClick={() => {
                             naviate.push(`/dashboard/product/${item.id}`)
                         }}>
                             <div className="relative w-full py-2">
                                 <img
                                     src={item.image}
                                     alt={item.title}
-                                    
+
                                     className="w-full h-40 object-contain border border-gray-300 rounded-md"
                                 />
                             </div>
@@ -134,10 +138,14 @@ const AddCard = ({ setClose }: { setClose: React.Dispatch<SetStateAction<boolean
             return
         }
 
-        const response = await axios.post('https://fakestoreapi.com/products', formData)
-        console.log(response)
-       toast.success("Successfully added", {duration: 1500})
-       setClose(false)
+        try {
+            const response = await axios.post('https://fakestoreapi.com/products', formData)
+            console.log(response)
+            toast.success("Successfully added", { duration: 1500 })
+            setClose(false)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
