@@ -1,16 +1,14 @@
 'use client'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
 import { IProduct } from "@/types/product"
 import axios from "axios"
 import { Star } from "lucide-react"
 import { useParams, useRouter } from "next/navigation"
-import { title } from "process"
 import { useEffect, useState } from "react"
 import { toast } from "sonner"
 
-const page = () => {
+const Page = () => {
 
     const { id } = useParams()
     const navigate = useRouter()
@@ -153,4 +151,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

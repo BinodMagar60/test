@@ -3,7 +3,7 @@ import { useUserContext } from '@/context/UserContext'
 import { User } from 'lucide-react'
 import React from 'react'
 
-const page = () => {
+const Page = () => {
     const { userDetail } = useUserContext()
     return (
         <div className='w-full flex justify-center'>
@@ -30,4 +30,4 @@ const page = () => {
     )
 }
 
-export default page
+export default Page

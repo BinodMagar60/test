@@ -3,12 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { IProduct } from "@/types/product"
-import axios, { AxiosResponse } from "axios"
 import { Plus, Star } from "lucide-react"
-import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { SetStateAction, useEffect, useState } from "react"
 import { toast } from "sonner"
+import axios from "axios"
 
 
 import {  z } from "zod";
@@ -25,7 +24,7 @@ const productSchema = z.object({
 
 
 
-const page = () => {
+const Page = () => {
 
     const [productData, setProductData] = useState<IProduct[]>([])
     const [isClose, setClose] = useState(false)
@@ -186,4 +185,4 @@ const AddCard = ({ setClose }: { setClose: React.Dispatch<SetStateAction<boolean
     )
 }
 
-export default page
+export default Page
